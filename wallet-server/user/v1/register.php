@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //checking if user credentials already exist in database
     $checkUniqueStmt = $conn->prepare("SELECT email FROM users WHERE email = ? or phone = ? or username = ?");
-    $checkUniqueStmt->bind_param("sis", $email, $phone, $username);
+    $checkUniqueStmt->bind_param("sss", $email, $phone, $username);
     $checkUniqueStmt->execute();
     $checkUniqueStmt->store_result();
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $sql = "INSERT INTO users (username, phone, email,password) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("siss", $username, $phone, $email, $password);
+        $stmt->bind_param("ssss", $username, $phone, $email, $password);
 
         if ($stmt->execute()) {
             return_success();
