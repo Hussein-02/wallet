@@ -1,6 +1,7 @@
 <?php
 
 include "connection/connection.php";
+include "utils.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -25,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION["role"] = $role;
             $_SESSION["username"] = $username;
 
-            echo "login successfull!";
+            return_success();
         } else {
-            echo "incorrect password";
+            return_failure("incorrect password");
         }
     } else {
-        echo "email or username not found";
+        return_failure("email or username not found");
     }
     $stmt->close();
     $conn->close();

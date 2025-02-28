@@ -7,9 +7,9 @@ function return_success()
     return json_encode($response);
 }
 
-function return_failure()
+function return_failure($string)
 {
     $response = [];
-    $response["success"] = false;
+    $response["failure"] = $string;
     return json_encode($response);
 }

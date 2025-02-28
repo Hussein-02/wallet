@@ -1,6 +1,7 @@
 <?php
 
 include "connection/connection.php";
+include "utils.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -16,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkUniqueStmt->store_result();
 
     if ($checkUniqueStmt->num_rows > 0) {
-        echo "username,phone number or email already exists";
+        return_failure("username,phone number or email already exists");
     } else {
         $sql = "INSERT INTO users (username, phone, email,password) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("siss", $username, $phone, $email, $password);
 
         if ($stmt->execute()) {
-            echo "Account created pending verification";
+            return_success();
         } else {
-            echo "Error:" . $stmt->error;
+            return_failure($stmt->error);
         }
         $stmt->close();
     }
