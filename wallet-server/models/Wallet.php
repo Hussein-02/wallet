@@ -47,11 +47,11 @@ class Wallet
         $stmt->close();
     }
 
-    public function updateWallet($user_id, $balance)
+    public function updateWallet($wallet_id, $balance)
     {
-        $sql = "UPDATE walltes SET balance = ?  WHERE user_id = ?";
+        $sql = "UPDATE walltes SET balance = ?  WHERE wallet_id = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ii", $balance, $user_id);
+        $stmt->bind_param("di", $balance, $wallet_id);
 
         if ($stmt->execute()) {
             return_success();
