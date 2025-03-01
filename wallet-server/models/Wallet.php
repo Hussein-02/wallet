@@ -18,33 +18,16 @@ class Wallet
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $user_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 
     public function getWalletById($wallet_id)
     {
-
-        if (isset($wallet_id)) {
-            $sql = "SELECT * FROM wallets WHERE wallet_id = ?";
-        } else {
-            $sql = "SELECT * FROM wallets";
-        }
-
+        $sql = "SELECT * FROM wallets WHERE wallet_id = ?";
         $stmt = $this->conn->prepare($sql);
-        if (isset($wallet_id)) {
-            $stmt->bind_param("i", $wallet_id);
-        }
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        $stmt->bind_param("i", $wallet_id);
+
+        return $stmt->get_result()->fetch_assoc();
     }
 
     public function updateWallet($wallet_id, $balance)
@@ -53,12 +36,7 @@ class Wallet
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("di", $balance, $wallet_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 
     public function deleteWallet($wallet_id)
@@ -67,11 +45,6 @@ class Wallet
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $wallet_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 }

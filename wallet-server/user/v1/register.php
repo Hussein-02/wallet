@@ -2,6 +2,9 @@
 
 include "connection/connection.php";
 include "utils.php";
+include "models/User.php";
+
+$usermodel = new User($conn);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -19,16 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($checkUniqueStmt->num_rows > 0) {
         return_failure("username,phone number or email already exists");
     } else {
-        $sql = "INSERT INTO users (username, phone, email,password) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss", $username, $phone, $email, $password);
-
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        $userModel->createUser($username, $email, $phone, $password);
     }
     $checkUniqueStmt->close();
     $conn->close();

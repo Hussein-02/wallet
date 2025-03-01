@@ -18,12 +18,7 @@ class Transaction
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("idss", $wallet_id, $amount, $transaction_type, $reference_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 
     public function getTransactionsByWalletId($wallet_id)
@@ -32,12 +27,7 @@ class Transaction
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $wallet_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->get_result();
     }
 
     public function deleteTransaction($transaction_id)
@@ -46,11 +36,6 @@ class Transaction
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $transaction_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 }

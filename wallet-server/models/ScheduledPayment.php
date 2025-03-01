@@ -18,12 +18,7 @@ class ScheduledPayment
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iisss", $wallet_id, $recipient_wallet_id, $amount, $schedule_type, $next_run);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 
     public function getScheduledPayments($wallet_id)
@@ -32,12 +27,7 @@ class ScheduledPayment
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $wallet_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->get_result();
     }
 
     public function updateStatus($scheduled_id, $status)
@@ -46,12 +36,7 @@ class ScheduledPayment
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("si", $status, $scheduled_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 
     public function deleteScheduledPayment($scheduled_id)
@@ -60,11 +45,6 @@ class ScheduledPayment
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $scheduled_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 }

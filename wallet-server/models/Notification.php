@@ -18,12 +18,7 @@ class Notification
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("is", $user_id, $message);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 
     public function getNotificationsByUserId($user_id)
@@ -32,12 +27,7 @@ class Notification
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $user_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->get_result();
     }
 
     public function markAsRead($notification_id)
@@ -46,11 +36,6 @@ class Notification
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $notification_id);
 
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
+        return $stmt->execute();
     }
 }
