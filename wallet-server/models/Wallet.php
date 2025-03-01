@@ -47,4 +47,16 @@ class Wallet
 
         return $stmt->execute();
     }
+
+
+    //to return wallet balance
+    public function get_balance($wallet_id)
+    {
+        $sql = "SELECT balance FROM wallets WHERE wallet_id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $wallet_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        return $result['balance'] ?? 0;
+    }
 }
