@@ -21,7 +21,7 @@ class Notification
         return $stmt->execute();
     }
 
-    public function getNotificationsByUserId($user_id)
+    public function getNotifications($user_id)
     {
         $sql = "SELECT * FROM notifications WHERE user_id = ?";
         $stmt = $this->conn->prepare($sql);
