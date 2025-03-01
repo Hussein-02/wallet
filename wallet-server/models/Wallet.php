@@ -3,7 +3,7 @@
 include "connection/connection.php";
 include "utils.php";
 
-class User
+class Wallet
 {
     private $conn;
 
@@ -12,30 +12,9 @@ class User
         $this->conn = $conn;
     }
 
-    public function createUser($username, $email, $phone, $password)
+    public function createWallet($user_id)
     {
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-        $sql = "INSERT INTO users (username, phone, email,password) VALUES (?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ssss", $username, $phone, $email, $password);
-
-        if ($stmt->execute()) {
-            return_success();
-        } else {
-            return_failure($stmt->error);
-        }
-        $stmt->close();
-    }
-
-    public function getUserById($user_id)
-    {
-
-        if (isset($user_id)) {
-            $sql = "SELECT * FROM users WHERE user_id = ?";
-        } else {
-            $sql = "SELECT * FROM users";
-        }
-
+        $sql = "INSERT INTO wallets (user_id) VALUE (?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $user_id);
 
@@ -47,11 +26,32 @@ class User
         $stmt->close();
     }
 
-    public function updateUser($user_id, $username, $email, $phone)
+    public function getWalletById($wallet_id)
     {
-        $sql = "UPDATE users SET username = ?, email = ?, phone = ? WHERE user_id = ?";
+
+        if (isset($wallet_id)) {
+            $sql = "SELECT * FROM wallets WHERE wallet_id = ?";
+        } else {
+            $sql = "SELECT * FROM wallets";
+        }
+
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("sssi", $username, $email, $phone, $user_id);
+        if (isset($wallet_id)) {
+            $stmt->bind_param("i", $wallet_id);
+        }
+        if ($stmt->execute()) {
+            return_success();
+        } else {
+            return_failure($stmt->error);
+        }
+        $stmt->close();
+    }
+
+    public function updateWallet($user_id, $balance)
+    {
+        $sql = "UPDATE walltes SET balance = ?  WHERE user_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii", $balance, $user_id);
 
         if ($stmt->execute()) {
             return_success();
@@ -61,11 +61,11 @@ class User
         $stmt->close();
     }
 
-    public function deleteUser($user_id)
+    public function deleteWallet($wallet_id)
     {
-        $sql = "DELETE FROM users WHERE user_id = ?";
+        $sql = "DELETE FROM wallets WHERE wallet_id = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $user_id);
+        $stmt->bind_param("i", $wallet_id);
 
         if ($stmt->execute()) {
             return_success();

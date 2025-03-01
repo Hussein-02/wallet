@@ -34,8 +34,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close();
 }
 
-
-
-
-
 //got help from geeksforgeeks(https://www.geeksforgeeks.org/creating-a-registration-and-login-system-with-php-and-mysql/)
