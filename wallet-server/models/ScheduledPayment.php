@@ -14,7 +14,7 @@ class ScheduledPayment
 
     public function createScheduledPayment($wallet_id, $recipient_wallet_id, $amount, $schedule_type, $next_run)
     {
-        $sql = "INSERT INTO scheduled_payments (wallet_id, recipient_wallet_id,amount,scheduled_type,next_run) VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO scheduled_payments (wallet_id, recipient_wallet_id,amount,scheduled_type,next_run,status) VALUES (?,?,?,?,?,'active')";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iisss", $wallet_id, $recipient_wallet_id, $amount, $schedule_type, $next_run);
 
