@@ -1,12 +1,16 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
+
+    $json = file_get_contents("php://input");
+    $data = json_decode($json, true);
+
+    $email = $data['email'];
+    $password = $data['password'];
+    $confirmPassword = $data['confirmPassword'];
 
     if ($password === $confirmPassword) {
         $sql = "UPDATE users SET password = ? WHERE email = ?";

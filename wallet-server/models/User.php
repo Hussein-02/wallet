@@ -1,7 +1,7 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
 
 class User
 {
@@ -15,7 +15,7 @@ class User
     public function createUser($username, $email, $phone, $password)
     {
         $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-        $sql = "INSERT INTO users (username, phone, email,password) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, phone, email,password_hash) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ssss", $username, $phone, $email, $password);
 

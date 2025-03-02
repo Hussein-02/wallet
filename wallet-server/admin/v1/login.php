@@ -1,12 +1,14 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
     $data = json_decode(file_get_contents("php://input"), true);
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $data['email'];
+    $password = $data['password'];
 
     $sql = "SELECT user_id, email, password_hash, role FROM users WHERE email = ? AND role = 'admin'";
     $stmt = $conn->prepare($sql);

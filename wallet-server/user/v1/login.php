@@ -1,12 +1,15 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $json = file_get_contents("php://input");
+    $data = json_decode($json, true);
+
+    $username = $data['username'];
+    $email = $data['email'];
+    $password = $data['password'];
 
     $sql = "SELECT user_id, email, phone, password_hash, role, username FROM users WHERE email = ? or username = ?";
     $stmt = $conn->prepare($sql);
