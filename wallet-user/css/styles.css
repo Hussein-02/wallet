@@ -18,9 +18,8 @@ body {
   height: 5em;
   align-items: center;
   z-index: 100;
-  /* padding-right: 100%;
-  padding-left: 100%; */
-  /* justify-content: space-evenly; */
+
+  justify-content: space-evenly;
 }
 
 .nav-ul {
@@ -169,6 +168,44 @@ body {
   margin-right: 3vw;
 }
 
+.footer-container .logo {
+  margin-top: 3.3vw;
+}
+
+.footer-container {
+  margin-top: 3vw;
+}
+
+.footer-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-container > ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style: none;
+}
+
+.footer-container > ul > li {
+  margin: 3vw;
+}
+
+.footer-container > ul > li > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container > ul > li > ul > li {
+  margin-bottom: 50px;
+}
+
+.rights {
+  gap: 30vw;
+}
+
 /*------------------------------- responsive section------------------- */
 
 @media (max-width: 992px) {
@@ -184,6 +221,33 @@ body {
     top: 15%;
     font-size: 30px;
   } */
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-container ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: -7vw;
+  }
+
+  .footer-container li {
+    margin-bottom: 10px;
+  }
+
+  .footer-li {
+    margin-bottom: 20px;
+  }
+  /* .footer-container > ul > li {
+    margin: 0vw;
+  } */
+  .footer-container > ul > li > ul > li {
+    margin-bottom: 5px;
+    margin-left: -5vw;
+  }
 
   .header-buttons {
     width: 20vw;
@@ -210,6 +274,10 @@ body {
     font-size: 10px;
   }
 
+  .logo {
+    font-size: 30px;
+  }
+
   .login-btn {
     width: 75px;
     height: 30px;
@@ -225,5 +293,9 @@ body {
     background-color: black;
     color: white;
     border-radius: 90px;
+  }
+
+  .rights {
+    font-size: 2vw;
   }
 }
