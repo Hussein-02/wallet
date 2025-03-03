@@ -9,12 +9,18 @@ body {
 }
 
 .navbar {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  background-color: white;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   height: 5em;
   align-items: center;
-  /* padding: 0 20px;
-  flex-wrap: wrap; */
+  z-index: 100;
+  /* padding-right: 100%;
+  padding-left: 100%; */
+  /* justify-content: space-evenly; */
 }
 
 .nav-ul {
@@ -126,13 +132,41 @@ body {
 }
 
 .main1 > img {
-  height: 379px;
-  width: 512px;
+  height: 20vw;
+  width: 30vw;
 }
 
 .main1 > h2 {
-  font-size: 50px;
-  margin-right: 5vw;
+  font-size: 3vw;
+  margin-right: 3vw;
+}
+
+.main2 {
+  margin-top: 3vw;
+}
+
+.main2 > img {
+  height: 23vw;
+  width: 35vw;
+}
+
+.main2 > h2 {
+  font-size: 3vw;
+  margin-left: 3vw;
+}
+
+.main3 {
+  margin-top: 3vw;
+}
+
+.main3 > img {
+  height: 30vw;
+  width: 30vw;
+}
+
+.main3 > h2 {
+  font-size: 3vw;
+  margin-right: 3vw;
 }
 
 /*------------------------------- responsive section------------------- */
