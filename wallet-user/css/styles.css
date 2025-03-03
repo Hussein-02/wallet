@@ -1,3 +1,7 @@
+html {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -69,17 +73,11 @@ body {
 .login-btn {
   width: 113px;
   height: 48px;
-  background-color: white;
+  background-color: transparent;
   border: 1 black;
   border-radius: 90px;
   margin-right: 10px;
   cursor: pointer;
-}
-
-.login-btn:hover {
-  cursor: pointer;
-  background-color: black;
-  color: white;
 }
 
 .signup-btn {
@@ -91,26 +89,97 @@ body {
   cursor: pointer;
 }
 
-.test {
-  width: 10px;
-  height: 10px;
-  /* max-height: 600px;
-  border-radius: 50px; */
-  /* background-color: black; */
+.header {
+  width: 70%;
+  position: relative;
+  text-align: center;
+  margin-top: 3vw;
 }
 
-@media (max-width: 979px) {
+.header-img {
+  width: 100%;
+  max-height: 600px;
+  border-radius: 50px;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.header-title {
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  font-size: 2.3vw;
+  font-weight: 500;
+  text-align: start;
+}
+
+.header-buttons {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  display: flex;
+  gap: 10px;
+}
+
+.main1 {
+  margin-top: 3vw;
+}
+
+.main1 > img {
+  height: 379px;
+  width: 512px;
+}
+
+.main1 > h2 {
+  font-size: 50px;
+  margin-right: 5vw;
+}
+
+/*------------------------------- responsive section------------------- */
+
+@media (max-width: 992px) {
   .nav-ul {
     max-height: 0;
     overflow: hidden;
   }
 }
 
+@media (max-width: 768px) {
+  /* .header-title {
+    right: 5%;
+    top: 15%;
+    font-size: 30px;
+  } */
+
+  .header-buttons {
+    width: 20vw;
+    height: 10vw;
+    right: 5%;
+    top: 40%;
+    margin-top: 10px;
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 576px) {
+  .header {
+    width: 100%;
+  }
+
+  .header-title {
+    font-size: 3vw;
+  }
+
+  .header-buttons > button {
+    width: 16vw;
+    height: 7vw;
+    font-size: 10px;
+  }
+
   .login-btn {
     width: 75px;
     height: 30px;
-    background-color: white;
+    background-color: transparent;
     border: 1 black;
     border-radius: 90px;
     margin-right: 10px;
