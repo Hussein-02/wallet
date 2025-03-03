@@ -18,8 +18,14 @@ body {
   height: 5em;
   align-items: center;
   z-index: 100;
-
   justify-content: space-evenly;
+}
+
+.navbar-img {
+  width: 40px;
+  height: 40px;
+  /* background-color: black; */
+  margin-left: 2vw;
 }
 
 .nav-ul {
@@ -62,6 +68,7 @@ body {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  /* background-color: black; */
 }
 
 .arrow {
@@ -216,12 +223,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* .header-title {
-    right: 5%;
-    top: 15%;
-    font-size: 30px;
-  } */
-
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -241,9 +242,7 @@ body {
   .footer-li {
     margin-bottom: 20px;
   }
-  /* .footer-container > ul > li {
-    margin: 0vw;
-  } */
+
   .footer-container > ul > li > ul > li {
     margin-bottom: 5px;
     margin-left: -5vw;
