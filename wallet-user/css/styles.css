@@ -384,6 +384,19 @@ body {
   max-width: 500px;
 }
 
+.register-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+  max-width: 600px;
+  height: 70vw;
+  max-height: 600px;
+  background-color: white;
+  border: 2px solid orange;
+  text-align: center;
+}
+
 /*------------------------------- responsive section------------------- */
 
 @media (max-width: 992px) {
