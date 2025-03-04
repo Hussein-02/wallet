@@ -375,6 +375,15 @@ body {
   margin: 15px;
 }
 
+.forgot-password {
+  color: orange;
+  margin: 0;
+  /* margin-left: 8.5vw; */
+  /* align-self: flex-start; */
+  width: 40vw;
+  max-width: 500px;
+}
+
 /*------------------------------- responsive section------------------- */
 
 @media (max-width: 992px) {
