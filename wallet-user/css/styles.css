@@ -472,4 +472,21 @@ body {
   .card-balance {
     margin-top: 40px;
   }
+
+  .register-section {
+    font-size: 10px;
+  }
+
+  .register-section input {
+    font-size: 10px;
+  }
+
+  .register-section h1 {
+    margin-top: 20vw;
+    /* margin-bottom: 0vw; */
+  }
+
+  /* .login-form {
+    margin-top: -vw;
+  } */
 }
