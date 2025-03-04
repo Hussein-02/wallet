@@ -319,32 +319,6 @@ body {
   margin: 0;
 }
 
-/* .tiers-box {
-  width: 200px;
-  height: 200px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid orange;
-  color: black;
-
-  text-align: center;
-}
-
-.tiers-section {
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-}
-
-.tiers-boxes {
-  gap: 20px;
-  display: flex;
-  flex-wrap: wrap;
-} */
-
 /*------------------------------- responsive section------------------- */
 
 @media (max-width: 992px) {
@@ -428,5 +402,14 @@ body {
 
   .rights {
     font-size: 2vw;
+  }
+
+  .card-display {
+    width: 350px;
+    height: 150px;
+  }
+
+  .card-balance {
+    margin-top: 40px;
   }
 }
