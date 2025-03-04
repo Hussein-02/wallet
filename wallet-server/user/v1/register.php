@@ -1,17 +1,25 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
-include "models/User.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
+include "../../models/User.php";
 
 $usermodel = new User($conn);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
+
+    $json = file_get_contents("php://input");
+    $data = json_decode($json, true);
+
+    if (!$data) {
+        return_failure("Invalid JSON input");
+    }
+
+    $username = $data['username'];
+    $phone = $data['phone'];
+    $email = $data['email'];
     //encrypting password
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($data['password'], PASSWORD_DEFAULT);
 
     //checking if user credentials already exist in database
     $checkUniqueStmt = $conn->prepare("SELECT email FROM users WHERE email = ? or phone = ? or username = ?");
@@ -22,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($checkUniqueStmt->num_rows > 0) {
         return_failure("username,phone number or email already exists");
     } else {
-        $userModel->createUser($username, $email, $phone, $password);
+        $usermodel->createUser($username, $email, $phone, $password);
     }
     $checkUniqueStmt->close();
     $conn->close();

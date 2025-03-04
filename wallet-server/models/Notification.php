@@ -1,7 +1,7 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
 
 class Notification
 {

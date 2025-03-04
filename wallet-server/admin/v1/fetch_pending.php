@@ -9,7 +9,7 @@ if (!isset($_SESSION["admin_id"])) {
     return_failure("unauthorized access");
 }
 
-$sql = "SELECT user_id, email,phone,username, role,verification_status FROM users";
+$sql = "SELECT * FROM users WHERE verification_status = 'pending'";
 $result = $conn->query($sql);
 
 $users = [];

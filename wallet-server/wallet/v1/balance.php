@@ -1,7 +1,7 @@
 <?php
 
-include "connection/connection.php";
-include "utils.php";
+include "../../connection/connection.php";
+include_once "../../utils.php";
 
 $wallet = new Wallet($conn);
 //to recieve json from api request
