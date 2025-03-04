@@ -17,7 +17,7 @@ body {
   /* max-width: 1200px; */
   height: 5em;
   align-items: center;
-  /* z-index: 100; */
+  z-index: 100;
   justify-content: space-evenly;
 }
 
@@ -66,6 +66,8 @@ body {
 .dropdown-content a {
   padding: 12px 16px;
   display: block;
+  text-decoration: none;
+  color: black;
   /* background-color: black; */
 }
 
@@ -216,16 +218,143 @@ body {
   gap: 30vw;
 }
 
+.card-display {
+  margin-top: 3vw;
+  width: 400px;
+  height: 200px;
+  background-color: orange;
+  border-radius: 20px;
+  color: white;
+  /* flex-direction: column; */
+}
+
+.card-safe {
+  width: 300px;
+  height: 100%;
+}
+
+.card-logo {
+  text-align: end;
+  /* margin-right: 4vw; */
+}
+
+.card-balance {
+  /* justify-self: auto; */
+  margin-top: 60px;
+}
+
+.card-btn {
+  width: 113px;
+  height: 48px;
+  background-color: transparent;
+  color: black;
+  border-radius: 90px;
+  cursor: pointer;
+  border: 1px solid orange;
+  margin: 2vw;
+}
+
+.transaction-box {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  border-radius: 10px;
+  color: white;
+  /* flex-direction: column; */
+  text-align: center;
+}
+
+.transaction-section {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* margin-right: auto;
+  margin-left: 10vw; */
+  /* flex-wrap: wrap; */
+}
+
+.transaction-boxes {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quick-access-box {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid orange;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-access-section {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* margin-right: auto;
+  margin-left: 10vw; */
+  /* flex-wrap: wrap; */
+}
+
+.quick-access-boxes {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.quick-access-box img {
+  width: 50px;
+  height: 50px;
+}
+.quick-access-box p {
+  margin: 0;
+}
+
+/* .tiers-box {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid orange;
+  color: black;
+
+  text-align: center;
+}
+
+.tiers-section {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.tiers-boxes {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+} */
+
 /*------------------------------- responsive section------------------- */
 
 @media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
   .nav-ul {
     max-height: 0;
     overflow: hidden;
   }
-}
-
-@media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -235,7 +364,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: -7vw;
+    margin-left: -3vw;
   }
 
   .footer-container li {
@@ -257,7 +386,7 @@ body {
     right: 5%;
     top: 40%;
     margin-top: 10px;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
 
