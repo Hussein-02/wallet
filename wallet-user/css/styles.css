@@ -319,6 +319,63 @@ body {
   margin: 0;
 }
 
+.login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+  max-width: 600px;
+  height: 50vw;
+  max-height: 489px;
+  background-color: white;
+  border: 2px solid orange;
+  text-align: center;
+}
+
+.login-section > h1 {
+  font-size: 40px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: start;
+}
+
+.login-form > input {
+  max-width: 240px;
+  max-height: 45px;
+  height: 4vw;
+  width: 20vw;
+  background-color: orange;
+  color: white;
+  border-radius: 10px;
+  border: 0px;
+  font-size: 20px;
+  margin: 30px;
+}
+
+.login-input > input {
+  width: 40vw;
+  max-width: 500px;
+  max-height: 45px;
+  height: 4vw;
+  border: 2px solid orange;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 40vw;
+  height: 6vw;
+  margin: 15px;
+}
+
 /*------------------------------- responsive section------------------- */
 
 @media (max-width: 992px) {
