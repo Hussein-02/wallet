@@ -55,12 +55,4 @@ status, (enum('active','completed','cancelled'))
 created_at
 )
 
-                                           _ _ _ _ _ _ _1 to many------->scheduled_payments
-                                          |
-                                          |
-
-users-----------1 to many---------->wallets-------1 to many------->transactions
-|
-|\_ \_ \_ \_ \_ \_1 to many---------->notifications
-
 <!-- database structure end -->
