@@ -2,6 +2,8 @@ IP Address is: 15.188.75.137
 DNS: ec2-15-188-75-137.eu-west-3.compute.amazonaws.com
 https://github.com/Hussein-02/wallet
 
+i also want you to know that i worked on and finished backend and then i started working on the frontend but i didn't have time to do much of it so i onlyh have the login and register functional
+
 <!-- database structure -->
 
 Tables: users, transactions, wallets, scheduled payments, notifications
