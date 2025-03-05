@@ -74,6 +74,10 @@ class Transaction
             $stmt2->bind_param("di", $amount, $receiver_wallet_id);
             $stmt2->execute();
 
+            $this->createTransaction($sender_wallet_id, $amount, "transfer", $receiver_wallet_id);
+            $this->createTransaction($receiver_wallet_id, $amount, "transfer", $sender_wallet_id);
+
+
             $this->conn->commit();
             return_success();
         } catch (Exception $e) {

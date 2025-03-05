@@ -56,20 +56,20 @@
     <!-- <h1 class="logo">WALLET</h1> -->
     <div class="register-section">
       <h1>Wallet To Wallet</h1>
-      <form action="/.php" class="login-form">
+      <form id="transferForm" class="login-form">
         <div class="login-input">
-          <label for="username">Receiver's Username</label>
-          <input type="text" id="username" name="username" />
+          <label for="receiver_wallet_id">Receiver's Wallet Id</label>
+          <input type="text" id="receiver_wallet_id" name="receiver_wallet_id" />
         </div>
 
         <div class="login-input">
           <label for="Amount">Amount to Transfer in USD</label>
-          <input type="text" id="amount" name="amount" />
+          <input type="number" id="amount" name="amount" />
         </div>
 
         <div class="login-input">
-          <label for="email">Note</label>
-          <input type="text" id="email" name="email" />
+          <label for="note">Note</label>
+          <input type="text" id="note" name="note" />
         </div>
         <!-- <div class="submit-btn"> -->
             <input type="submit" value="Send"/>
@@ -105,6 +105,7 @@
           <h3>Terms & Conditions | Privacy Policy</h3>
         </div>
       </footer>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script src="./javascript/auth.js"></script>
     </body>
     <!------------------------------------ footer end--------------------------------------->
