@@ -43,7 +43,7 @@
             <div class="dropdown-content">
               <a href="">Profile</a>
               <a href="">History</a>
-              <a href="">Log Out</a>
+              <a href="" id="logout">Log Out</a>
             </div>
           </div>
         </div>
@@ -154,6 +154,44 @@
         <h3>Terms & Conditions | Privacy Policy</h3>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutButton = document.querySelector("#logout");
+
+        if (logoutButton) {
+          logoutButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            localStorage.removeItem("token");
+
+            window.location.href = "login.html";
+          });
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const token = localStorage.getItem("jwt_token");
+
+        if (!token) {
+          window.location.href = "login.html";
+        }
+
+        // Logout functionality
+        const logoutButton = document.querySelector(".dropdown-content a[href='']");
+        if (logoutButton) {
+          logoutButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Remove JWT token from local storage
+            localStorage.removeItem("jwt_token");
+
+            // Redirect to login page
+            window.location.href = "login.html";
+          });
+        }
+      });
+    </script>
   </body>
   <!------------------------------------ footer end--------------------------------------->
 </html>
