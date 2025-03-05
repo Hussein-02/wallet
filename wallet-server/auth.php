@@ -5,6 +5,11 @@ $key = "12345";
 // i used chatgpt to help me with this page since its the last day and there are alot of things that i must do in the project
 // prompt: how to validate jwt token on protected routes 
 
+function base64url_encode($data)
+{
+    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+}
+
 function verify_jwt($token, $key)
 {
     $parts = explode(".", $token);
