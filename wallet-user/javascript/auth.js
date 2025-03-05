@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const logoutButton = document.querySelector(".dropdown-content a[href='#logout']");
+  const logoutButton = document.querySelector("#logout");
   if (logoutButton) {
     logoutButton.addEventListener("click", function (event) {
       event.preventDefault();
