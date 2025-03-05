@@ -1,45 +1,39 @@
-document.getElementById("transfer-form").addEventListener("submit", function (event) {
-  event.preventDefault();
+document.getElementById("transferForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  const receiver = document.getElementById("receiver").value;
-  const amount = parseFloat(document.getElementById("amount").value);
-  const note = document.getElementById("note").value;
+  const email = localStorage.getItem("email");
 
-  const sender_wallet_id = localStorage.getItem("wallet_id");
+  const receiver_wallet_id = document.getElementById("receiver_wallet_id").value;
+  const amount = document.getElementById("amount").value;
 
-  if (!sender_wallet_id) {
-    alert("No wallet found for sender.");
-    return;
-  }
+  axios
+    .get(`http://localhost/wallet/wallet-server/user/v1/getWalletByEmail.php?email=${email}`)
+    .then((response) => {
+      if (response.data.success) {
+        const sender_wallet_id = response.data.wallet_id;
 
-  axios(`/path/to/getReceiverWallet.php?username=${receiver}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.wallet_id) {
-        const receiver_wallet_id = data.wallet_id;
+        const transferData = {
+          sender_wallet_id: sender_wallet_id,
+          receiver_wallet_id: receiver_wallet_id,
+          amount: amount,
+        };
 
-        axios("http://localhost/wallet/wallet-server/wallet/v1/transfer.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            sender_wallet_id: sender_wallet_id,
-            receiver_wallet_id: receiver_wallet_id,
-            amount: amount,
-            note: note,
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              alert(data.message);
-            } else {
-              alert("Error: " + data.message);
-            }
-          });
+        return axios.post(
+          "http://localhost/wallet/wallet-server/transaction/v1/transfer.php",
+          transferData
+        );
       } else {
-        alert("Receiver not found.");
+        throw new Error("Failed to retrieve sender's wallet ID.");
       }
+    })
+    .then((response) => {
+      if (response.data.success) {
+        console.log("transaction successful");
+      } else {
+        console.log("transaction failed");
+      }
+    })
+    .catch((error) => {
+      console.error("There was an error:", error);
     });
 });
