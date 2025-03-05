@@ -59,4 +59,13 @@ class Wallet
         $result = $stmt->get_result()->fetch_assoc();
         return $result['balance'] ?? 0;
     }
+
+    public function getWalletByUserId($user_id)
+    {
+        $sql = "SELECT * FROM wallets WHERE user_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+    }
 }
