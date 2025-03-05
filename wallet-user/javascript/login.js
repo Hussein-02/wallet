@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector(".login-form");
+  const form = document.querySelector("#loginForm");
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const token = response.data.token;
         localStorage.setItem("token", token);
 
-        window.location.href = "/home.html";
+        window.location.href = "/wallet/wallet-user/home.html";
       } else {
         alert(response.data.message);
       }

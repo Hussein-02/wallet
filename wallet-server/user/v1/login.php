@@ -23,9 +23,16 @@ function generate_jwt($payload, $key)
     return "$header_encoded.$payload_encoded.$signature_encoded";
 }
 
+header("Content-Type: application/json");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $json = file_get_contents("php://input");
     $data = json_decode($json, true);
+
+    if (!$data) {
+        echo json_encode(["success" => false, "message" => "Invalid JSON input"]);
+        exit;
+    }
 
     $email = $data['email'];
     $password = $data['password'];

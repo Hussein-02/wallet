@@ -6,6 +6,7 @@ include "../../models/User.php";
 
 $usermodel = new User($conn);
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $json = file_get_contents("php://input");
