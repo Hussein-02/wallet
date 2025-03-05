@@ -1,3 +1,5 @@
+I added the ER diagram and the Component diagram as images on the root folder
+
 <!-- database structure -->
 
 Tables: users, transactions, wallets, scheduled payments, notifications
