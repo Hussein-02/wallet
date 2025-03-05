@@ -65,7 +65,7 @@ class Transaction
             //remove from sender
             $sql1 = "UPDATE wallets SET balance = balance - ? WHERE wallet_id=? AND balance>= ?";
             $stmt1 = $this->conn->prepare($sql1);
-            $stmt1->bind_param("dii", $amount, $sender_wallet_id, $amount);
+            $stmt1->bind_param("did", $amount, $sender_wallet_id, $amount);
             $stmt1->execute();
 
             //give to receiver
@@ -73,6 +73,10 @@ class Transaction
             $stmt2 = $this->conn->prepare($sql2);
             $stmt2->bind_param("di", $amount, $receiver_wallet_id);
             $stmt2->execute();
+
+            $this->createTransaction($sender_wallet_id, $amount, "transfer", $receiver_wallet_id);
+            $this->createTransaction($receiver_wallet_id, $amount, "transfer", $sender_wallet_id);
+
 
             $this->conn->commit();
             return_success();

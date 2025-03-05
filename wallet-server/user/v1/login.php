@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->fetch();
 
         if (password_verify($password, $hashed_password)) {
-            // Create wallet if it doesn't exist
+
             $walletModel = new Wallet($conn);
             $wallet_check_sql = "SELECT wallet_id FROM wallets WHERE user_id = ?";
             $wallet_check_stmt = $conn->prepare($wallet_check_sql);
@@ -58,11 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $wallet_check_stmt->store_result();
 
             if ($wallet_check_stmt->num_rows === 0) {
-                $walletModel->createWallet($id); // Create a new wallet for the user
+                $walletModel->createWallet($id);
             }
             $wallet_check_stmt->close();
 
-            // Generate JWT token
+
             $form = [
                 "user_id" => $id,
                 "email" => $email,
@@ -79,10 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 "role" => $role
             ]]);
         } else {
-            echo json_encode(["success" => false, "message" => "Incorrect password"]);
+            return_failure("incorrect password");
         }
     } else {
-        echo json_encode(["success" => false, "message" => "Email not found"]);
+        return_failure("email not found");
     }
     $stmt->close();
     $conn->close();

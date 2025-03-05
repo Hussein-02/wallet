@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.data.success) {
         const token = response.data.token;
+        localStorage.setItem("email", email);
         localStorage.setItem("token", token);
 
         window.location.href = "/wallet/wallet-user/home.html";
