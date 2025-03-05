@@ -85,4 +85,21 @@ class User
             return_failure("Error uploading document");
         }
     }
+
+
+    public function getBalanceByEmail($email)
+    {
+        $sql = "SELECT balance FROM users WHERE email = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if ($user) {
+            return $user['balance'];
+        } else {
+            return false;
+        }
+    }
 }
