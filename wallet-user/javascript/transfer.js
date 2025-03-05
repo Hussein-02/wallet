@@ -7,7 +7,7 @@ document.getElementById("transferForm").addEventListener("submit", function (e) 
   const amount = document.getElementById("amount").value;
 
   axios
-    .get(`http://localhost/wallet/wallet-server/user/v1/getWalletByEmail.php?email=${email}`)
+    .get(`http://localhost/wallet/wallet-server/wallet/v1/getWalletByEmail.php?email=${email}`)
     .then((response) => {
       if (response.data.success) {
         const sender_wallet_id = response.data.wallet_id;
@@ -19,7 +19,7 @@ document.getElementById("transferForm").addEventListener("submit", function (e) 
         };
 
         return axios.post(
-          "http://localhost/wallet/wallet-server/transaction/v1/transfer.php",
+          "http://localhost/wallet/wallet-server/wallet/v1/transfer.php",
           transferData
         );
       } else {
