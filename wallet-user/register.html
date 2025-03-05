@@ -4,13 +4,15 @@
     <link rel="stylesheet" href="./css/utilities.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Wallet</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="/wallet/wallet-user/javascript/register.js"></script>
   </head>
 
   <body>
     <h1 class="logo">WALLET</h1>
     <div class="register-section">
       <h1>Register</h1>
-      <form action="/.php" class="login-form">
+      <form class="login-form" id="registerForm">
         <div class="login-input">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" />
@@ -34,7 +36,7 @@
           <input type="text" id="password" name="password" />
         </div>
 
-        <input type="submit" value="Log In" />
+        <input type="submit" value="Register" />
       </form>
     </div>
   </body>
