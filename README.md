@@ -1,4 +1,8 @@
-I added the ER diagram and the Component diagram as images on the root folder
+IP Address is: 15.188.75.137
+DNS: ec2-15-188-75-137.eu-west-3.compute.amazonaws.com
+https://github.com/Hussein-02/wallet
+
+i also want you to know that i worked on and finished backend and then i started working on the frontend but i didn't have time to do much of it so i onlyh have the login and register functional
 
 <!-- database structure -->
 
@@ -50,5 +54,13 @@ next_run, (timestamp for when must the next transaction happen)
 status, (enum('active','completed','cancelled'))
 created_at
 )
+
+                                           _ _ _ _ _ _ _1 to many------->scheduled_payments
+                                          |
+                                          |
+
+users-----------1 to many---------->wallets-------1 to many------->transactions
+|
+|\_ \_ \_ \_ \_ \_1 to many---------->notifications
 
 <!-- database structure end -->
