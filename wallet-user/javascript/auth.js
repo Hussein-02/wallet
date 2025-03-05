@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
 
       localStorage.removeItem("token");
+      localStorage.removeItem("email");
 
       window.location.href = "login.html";
     });
